@@ -2,18 +2,21 @@
 Django settings for arches_her project.
 """
 
+import json
 import os
+import sys
 from arches import __version__
 import inspect
+from django.utils.translation import gettext_lazy as _
 
 try:
     from arches.settings import *
 except ImportError:
     pass
 
+APP_NAME = 'arches_her'
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 APP_PATHNAME = "arches-her"
-STATICFILES_DIRS = (os.path.join(APP_ROOT, "media"),) + STATICFILES_DIRS
 
 DATATYPE_LOCATIONS.append("arches_her.datatypes")
 FUNCTION_LOCATIONS.append("arches_her.functions")
@@ -39,6 +42,7 @@ SEARCH_EXPORT_IMMEDIATE_DOWNLOAD_THRESHOLD = 2000  # The maximum number of insta
 SEARCH_EXPORT_LIMIT = 15000  # The maximum documents ElasticSearch will return in an export - **System Settings**
 
 BYPASS_CARDINALITY_TILE_VALIDATION = False
+ETL_MODULE_LOCATIONS.append("arches_her.etl_modules")
 
 CELERY_BROKER_URL = "amqp://guest:guest@localhost"
 CELERY_ACCEPT_CONTENT = ["json"]
@@ -84,7 +88,19 @@ SYSTEM_SETTINGS_LOCAL_PATH = os.path.join(
     APP_ROOT, "system_settings", "System_Settings.json"
 )
 WSGI_APPLICATION = "arches_her.wsgi.application"
-STATIC_ROOT = ""
+
+STATIC_ROOT = os.path.join(ROOT_DIR, "staticfiles")
+STATIC_URL = "/static/"
+STATICFILES_DIRS =  (
+    os.path.join(APP_ROOT, 'media', 'build'),
+    os.path.join(APP_ROOT, 'media'),
+) + STATICFILES_DIRS
+
+WEBPACK_LOADER = {
+    "DEFAULT": {
+        "STATS_FILE": os.path.join(APP_ROOT, 'webpack/webpack-stats.json'),
+    },
+}
 
 RESOURCE_IMPORT_LOG = os.path.join(APP_ROOT, "logs", "resource_import.log")
 
@@ -161,8 +177,16 @@ CACHES = {
 # Identify the usernames and duration (seconds) for which you want to cache the time wheel
 CACHE_BY_USER = {"anonymous": 3600 * 24}
 
-MOBILE_OAUTH_CLIENT_ID = ""
+OAUTH_CLIENT_ID = ""
 MOBILE_DEFAULT_ONLINE_BASEMAP = {"default": "mapbox://styles/mapbox/streets-v9"}
+
+LANGUAGES = [
+    # ("de", _("German")),
+    ("en", _("English")),
+    # ("en-gb", _("British English")),
+    # ("es", _("Spanish")),
+    # ("ar", _("Arabic")),
+]
 
 SESSION_COOKIE_NAME = f"{APP_NAME}_{__version__}"
 APP_TITLE = "Arches-HER"
@@ -173,15 +197,37 @@ DOCKER = False
 try:
     from .package_settings import *
 except ImportError:
-    pass
+    try: 
+        from package_settings import *
+    except ImportError as e:
+        pass
 
 try:
     from .settings_local import *
-except ImportError:
-    pass
+except ImportError as e:
+    try: 
+        from settings_local import *
+    except ImportError as e:
+        pass
 
 if DOCKER:
     try:
         from .settings_docker import *
     except ImportError:
-        pass
+        try: 
+            from settings_docker import *
+        except ImportError as e:
+            pass
+
+# returns an output that can be read by NODEJS
+if __name__ == "__main__":
+    print(
+        json.dumps({
+            'ARCHES_NAMESPACE_FOR_DATA_EXPORT': ARCHES_NAMESPACE_FOR_DATA_EXPORT,
+            'STATIC_URL': STATIC_URL,
+            'ROOT_DIR': ROOT_DIR,
+            'APP_ROOT': APP_ROOT,
+            'WEBPACK_DEVELOPMENT_SERVER_PORT': WEBPACK_DEVELOPMENT_SERVER_PORT,
+        })
+    )
+    sys.stdout.flush()
