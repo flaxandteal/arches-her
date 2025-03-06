@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             componentname="accessibility",
             slug="accessibility",
             config={},
-            sortorder=0
+            # sortorder=0
         )
 
         Plugin.objects.update_or_create(
@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
             componentname="active-consultations",
             slug="active-consultations",
             config={},
-            sortorder=0
+            # sortorder=0
             )
 
         Plugin.objects.update_or_create(
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
             componentname="application-area",
             config={"show":False},
             slug="application-area",
-            sortorder=0
+            # sortorder=0
             )
 
         Plugin.objects.update_or_create(
@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
             componentname="communication-workflow",
             config={"show":False},
             slug="communication-workflow",
-            sortorder=1
+            # sortorder=1
             )
 
         Plugin.objects.update_or_create(
@@ -68,7 +68,7 @@ class Migration(migrations.Migration):
             componentname="consultation-workflow",
             config={"show":False},
             slug="consultation-workflow",
-            sortorder=0
+            # sortorder=0
             )
 
         Plugin.objects.update_or_create(
@@ -79,7 +79,7 @@ class Migration(migrations.Migration):
             componentname="correspondence-workflow",
             config={"show":False},
             slug="correspondence-workflow",
-            sortorder=1
+            # sortorder=1
             )
 
         Plugin.objects.update_or_create(
@@ -90,7 +90,7 @@ class Migration(migrations.Migration):
             componentname="site-visit",
             config={"show":False},
             slug="site-visit",
-            sortorder=0
+            # sortorder=0
         )
 
         Plugin.objects.update_or_create(
@@ -146,7 +146,7 @@ class Migration(migrations.Migration):
                 "show":True
             },
             slug="init-workflow",
-            sortorder=0
+            # sortorder=0
             )
 
 
@@ -536,7 +536,7 @@ class Migration(migrations.Migration):
             type="popup",
             componentpath="views/components/search/bng-filter",
             componentname="bng-filter",
-            sortorder="0",
+            # sortorder="0",
             enabled=True,
         )
     
