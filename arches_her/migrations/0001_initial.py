@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
             )
 
         Plugin.objects.update_or_create(
-            pluginid="a1667717-b7bd-4570-b27a-ec352c767e0e",
+            pluginid="a1ee7172-9f9f-493a-ba73-2ec0758e9fe0",
             name="Consultation",
             icon="fa fa-file",
             component="views/components/plugins/consultation-workflow",
@@ -110,7 +110,7 @@ class Migration(migrations.Migration):
                         "circleColor": "#a7cdf0",
                         "desc": "An area that may be re-developed or newly built"
                     },{
-                        "workflowid": "a1667717-b7bd-4570-b27a-ec352c767e0e",
+                        "workflowid": "a1ee7172-9f9f-493a-ba73-2ec0758e9fe0",
                         "slug":"consultation-workflow",
                         "name": "Consultation",
                         "icon": "fa fa-file",
@@ -158,7 +158,7 @@ class Migration(migrations.Migration):
             "76a27df9-6f16-47ed-bd47-bb95c0fe7173",
             "b2778828-a6ac-6481-c38b-fd463d878f1f",
             "4dc9bd5a-6e5c-440d-ae3c-af94396e2d72",
-            "a1667717-b7bd-4570-b27a-ec352c767e0e",
+            "a1ee7172-9f9f-493a-ba73-2ec0758e9fe0",
             "4bd762cf-b581-11e9-a7f9-784f435179ea",
             "0b1499e0-6cdc-403b-a2e3-499c2201069d",
             "49507fb0-89c6-47b7-b506-9b2b29a3b8d8",
