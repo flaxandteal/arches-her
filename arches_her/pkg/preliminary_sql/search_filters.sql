@@ -6,8 +6,7 @@ INSERT INTO search_component (searchcomponentid,
                 classname,
                 type,
                 componentpath,
-                componentname,
-                enabled)
+                componentname)
             VALUES (
                 '8fc3d979-e51a-45d2-8136-6bcf207c9355',
                 'BNG Filter',
@@ -16,5 +15,4 @@ INSERT INTO search_component (searchcomponentid,
                 'BngFilter',
                 'popup',
                 'views/components/search/bng-filter',
-                'bng-filter',
-                true);
+                'bng-filter');
