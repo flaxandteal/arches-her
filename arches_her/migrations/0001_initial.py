@@ -94,7 +94,7 @@ class Migration(migrations.Migration):
         )
 
         Plugin.objects.update_or_create(
-            pluginid="49507fb0-89c6-47b7-b506-9b2b29a3b8d8",
+            pluginid="755a2ae4-1790-406d-bcea-94a20d444501",
             name="Consultations",
             icon="fa fa-play-circle",
             component="views/components/plugins/init-workflow",
@@ -161,7 +161,7 @@ class Migration(migrations.Migration):
             "a1ee7172-9f9f-493a-ba73-2ec0758e9fe0",
             "4bd762cf-b581-11e9-a7f9-784f435179ea",
             "0b1499e0-6cdc-403b-a2e3-499c2201069d",
-            "49507fb0-89c6-47b7-b506-9b2b29a3b8d8",
+            "755a2ae4-1790-406d-bcea-94a20d444501",
         ]):
             plugin.delete()
 
