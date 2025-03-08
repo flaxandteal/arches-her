@@ -171,7 +171,7 @@ define([
             ];
 
             Workflow.apply(this, [params]);
-            this.quitUrl = arches.urls.plugin('init-workflow');
+            this.quitUrl = arches.urls.plugin('init-her-workflow');
             this.reverseWorkflowTransactions = function() {
                 const quitUrl = this.quitUrl;
                 return $.ajax({

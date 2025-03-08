@@ -40,7 +40,7 @@ class IndexView(TemplateView):
         context['plugins'] = []
         context['plugin_labels'] = {
             'active-consultations':'Active',
-            'init-workflow':'New'
+            'init-her-workflow':'New'
         }
         context['main_script'] = 'index'
         user_check = request.user.is_authenticated and request.user.username != 'anonymous'

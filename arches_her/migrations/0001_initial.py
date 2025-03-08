@@ -97,8 +97,8 @@ class Migration(migrations.Migration):
             pluginid="755a2ae4-1790-406d-bcea-94a20d444501",
             name="Consultations",
             icon="fa fa-play-circle",
-            component="views/components/plugins/init-workflow",
-            componentname="init-workflow",
+            component="views/components/plugins/init-her-workflow",
+            componentname="init-her-workflow",
             config={
                 "workflows": [
                     {
@@ -145,7 +145,7 @@ class Migration(migrations.Migration):
                 ],
                 "show":True
             },
-            slug="init-workflow",
+            slug="init-her-workflow",
             # sortorder=0
             )
 
