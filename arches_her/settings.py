@@ -200,7 +200,7 @@ INSTALLED_APPS = (
     "arches_her",
     "django.contrib.postgres",
     "arches_querysets",
-    "arches_component_lab",
+    "arches_vue_components",
     "arches_controlled_lists",
     "pgtrigger",
 )
